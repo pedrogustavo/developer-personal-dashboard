@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { localStorage, get } from './utils'
+import { localStorage } from './utils'
 import { saveGithubAcessToken } from './service'
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
+
+import ListRepositories from './components/listRepositories'
 
 class App extends Component {
   componentWillMount() {
@@ -11,13 +14,21 @@ class App extends Component {
   }
 
   render() {
-    get('users/pedrogustavo/repos')
-      .then((response) => {
-        console.log(response)
-      })
     return (
-      <div>
-       eu
+      <div id='app'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-4'>
+
+            </div>
+            <div className='col-md-4'>
+
+            </div>
+            <div className='col-md-4'>
+              <ListRepositories />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
