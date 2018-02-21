@@ -24,7 +24,7 @@ class ListRepositories extends Component {
   render () {
     return (
       <div className="box-repositories">
-        <h3 className="repo-title">Seus Repositórios</h3>
+        <h3 className="repo-title">Seus Repositórios <span className="count">{this.state.repositories.length}</span></h3>
         <ul className="repo-list">
           {this.state.repositories.map((repo, index) => (
             <li className="repo-list-item" key={index}>
