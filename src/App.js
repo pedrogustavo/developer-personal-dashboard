@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 
 import ListRepositories from './components/listRepositories'
+import ListIssues from './components/listIssues'
 
 class App extends Component {
   componentWillMount() {
@@ -18,11 +19,8 @@ class App extends Component {
       <div id='app'>
         <div className='container'>
           <div className='row'>
-            <div className='col-md-4'>
-
-            </div>
-            <div className='col-md-4'>
-
+            <div className='col-md-8'>
+              <ListIssues />
             </div>
             <div className='col-md-4'>
               <ListRepositories />

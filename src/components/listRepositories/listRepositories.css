@@ -1,9 +1,3 @@
-.box-repositories {
-    margin-bottom: 20px;
-    border-radius: 3px;
-    border: 1px solid rgba(27,31,35,0.15);
-}
-
 .box-repositories ol,
 .box-repositories ul {
     padding: 0;
@@ -24,8 +18,8 @@
 }
 
 .box-repositories .repo-title .count {
-    float: right;
     display: inline-block;
+    margin-left: 10px;
     padding: 2px 5px;
     font-size: 12px;
     font-weight: 600;
