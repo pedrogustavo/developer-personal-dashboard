@@ -1,0 +1,44 @@
+.box-repositories {
+    margin-bottom: 20px;
+    border-radius: 3px;
+    border: 1px solid rgba(27,31,35,0.15);
+}
+
+.box-repositories ol,
+.box-repositories ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+.box-repositories .repo-title {
+    display: block;
+    padding: 9px 10px 10px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: #f6f8fa;
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+}
+
+.box-repositories .repo-list {
+    list-style: none;
+}
+
+.box-repositories .repo-list .repo-list-item-link {
+    position: relative;
+    display: block;
+    padding: 6px 64px 6px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-top: 1px solid #d1d5da;
+    color: #0366d6;
+    text-decoration: none;
+}
+
+
+.box-repositories .repo-list .repo-list-item-link:hover {
+    text-decoration: underline;
+}
