@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { localStorage } from './utils'
+import { localStorage, get } from './utils'
 import { saveGithubAcessToken } from './service'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 
 import ListRepositories from './components/listRepositories'
-import ListIssues from './components/listIssues'
+// import ListIssues from './components/listIssues'
 
 class App extends Component {
   constructor () {
@@ -17,6 +17,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getDataRepositories = this.getDataRepositories.bind(this)
   }
 
   handleChange (event) {
@@ -35,6 +36,13 @@ class App extends Component {
 
   }
 
+  getDataRepositories(nameRepo) {
+    return get(`https://api.github.com/repos/${nameRepo}/issues`)
+      .then((response) => {
+        return response.data
+      })
+  }
+
   componentWillMount() {
     localStorage.get('githubAcesstoken')
       ? console.log('você tem a chave')
@@ -47,21 +55,29 @@ class App extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-md-8'>
-              <ListIssues />
+              {
+                this.state.repositoriesUrl.map((item, index) => {
+                  let values = this.getDataRepositories(item).then((response) => {
+                    return response
+                  })
+
+                  return values
+
+                })
+              }
+
+
               <div className="box-include-repo">
-
-              <form onSubmit={this.handleSubmit}>
-                <div className="form-row">
-                  <div className="col">
-                    <input type="text" value={this.state.newRepositorie} onChange={this.handleChange} className="form-control" placeholder="Url do repositório" />
+                <form onSubmit={this.handleSubmit}>
+                  <div className="form-row">
+                    <div className="col">
+                      <input type="text" value={this.state.newRepositorie} onChange={this.handleChange} className="form-control" placeholder="Url do repositório" />
+                    </div>
+                    <div className="col">
+                      <button type="submit" className="btn btn-primary">Adicionar</button>
+                    </div>
                   </div>
-                  <div className="col">
-                    <button type="submit" className="btn btn-primary">Adicionar</button>
-                  </div>
-                </div>
-              </form>
-
-
+                </form>
               </div>
             </div>
             <div className='col-md-4'>
