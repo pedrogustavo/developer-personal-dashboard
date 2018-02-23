@@ -31,6 +31,11 @@
 
 .list-issues .list-issues-group .list-issues-group-item {
     padding: 8px 10px;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+.list-issues .list-issues-group .list-issues-group-item:last-child {
+    border-bottom: none;
 }
 
 .list-issues .list-issues-group .list-issues-group-item:hover {

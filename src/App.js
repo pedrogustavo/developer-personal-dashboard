@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { localStorage, get } from './utils'
+import { localStorage } from './utils'
 import { saveGithubAcessToken } from './service'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 
 import ListRepositories from './components/listRepositories'
-// import ListIssues from './components/listIssues'
+import ListIssues from './components/listIssues'
 
 class App extends Component {
   constructor () {
@@ -17,7 +17,6 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.getDataRepositories = this.getDataRepositories.bind(this)
   }
 
   handleChange (event) {
@@ -36,13 +35,6 @@ class App extends Component {
 
   }
 
-  getDataRepositories(nameRepo) {
-    return get(`https://api.github.com/repos/${nameRepo}/issues`)
-      .then((response) => {
-        return response.data
-      })
-  }
-
   componentWillMount() {
     localStorage.get('githubAcesstoken')
       ? console.log('você tem a chave')
@@ -55,17 +47,9 @@ class App extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-md-8'>
-              {
-                this.state.repositoriesUrl.map((item, index) => {
-                  let values = this.getDataRepositories(item).then((response) => {
-                    return response
-                  })
-
-                  return values
-
-                })
-              }
-
+              {this.state.repositoriesUrl.map((item, index) => (
+                <ListIssues data={item} key={index} />
+              ))}
 
               <div className="box-include-repo">
                 <form onSubmit={this.handleSubmit}>
