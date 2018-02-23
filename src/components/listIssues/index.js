@@ -24,15 +24,16 @@ class ListIssues extends Component {
             <a href={`https://github.com/${this.props.data}`} title={this.props.data} target="_blank">{this.props.data}</a>
           </h3>
           <ul className="list-issues-group">
-            {
-              this.state.listIssues.map((repo, index) => (
-                <li className="list-issues-group-item" key={index}>
-                  <a className="list-issues-group-item-name" href={repo.html_url} target="_blank" title={repo.title}>
-                    {repo.title}
-                  </a>
-                </li>
-              ))
-            }
+            {this.state.listIssues.map((repo, index) => (
+              <li className="list-issues-group-item" key={index}>
+                <a className="list-issues-group-item-name" href={repo.html_url} target="_blank" title={repo.title}>
+                  {repo.title}
+                  {repo.labels.map((label, index) => (
+                    <span key={index} style={{ background: `#${label.color}` }}>{label.name}</span>
+                  ))}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </Box>

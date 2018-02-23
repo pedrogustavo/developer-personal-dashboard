@@ -44,7 +44,6 @@
 
 .list-issues .list-issues-group .list-issues-group-item-name {
     display: block;
-    max-width: 460px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -52,4 +51,13 @@
     color: #24292e;
     text-decoration: none;
     font-size: 14px;
+}
+
+.list-issues .list-issues-group .list-issues-group-item-name span {
+    margin-left: 5px;
+    padding: 2px 4px;
+    color: #ffffff;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: .8em;
 }
