@@ -9,6 +9,13 @@ import 'bootstrap-social/bootstrap-social.css'
 class App extends Component {
   constructor () {
     super()
+
+    this.redirectToSignin = this.redirectToSignin.bind(this)
+  }
+
+  redirectToSignin () {
+    console.log('redirect')
+    window.location.assign(`https://github.com/login/oauth/authorize?client_id=d21867fa77ab8ad34efc&redirect_uri=${window.location.href}`)
   }
 
   componentWillMount() {
@@ -20,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div id='app'>
-        <button className="btn btn-block btn-social btn-lg btn-github">Sign in with Github</button>
+        <button className="btn btn-block btn-social btn-lg btn-github" onClick={this.redirectToSignin}>Sign in with Github</button>
       </div>
     );
   }
